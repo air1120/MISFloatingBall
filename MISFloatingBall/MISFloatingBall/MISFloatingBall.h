@@ -45,6 +45,13 @@ typedef void(^MISFloatingBallClickHandler)(MISFloatingBall *floatingBall);
  */
 @property (nonatomic, assign) MISFloatingBallEdgePolicy edgePolicy;
 
+@property (nonatomic, strong) UIView *parentView;
+
+// content
+@property (nonatomic, strong) UIImageView *ballImageView;
+@property (nonatomic, strong) UILabel *ballLabel;
+@property (nonatomic, strong) UIView *ballCustomView;
+
 /**
  初始化只会在当前指定的 view 范围内生效的悬浮球
  当 view 为 nil 的时候，和直接使用 initWithFrame 初始化效果一直，默认为全局生效的悬浮球
@@ -112,6 +119,10 @@ typedef void(^MISFloatingBallClickHandler)(MISFloatingBall *floatingBall);
  点击 floatingBall 的 block 回调
  */
 @property (nonatomic,   copy) MISFloatingBallClickHandler clickHandler;
+
+@property (nonatomic,   copy) MISFloatingBallClickHandler panStartHandler;
+
+@property (nonatomic,   copy) MISFloatingBallClickHandler backgroundViewClickHandler;
 
 // 文字颜色
 @property (nonatomic, strong) UIColor *textTypeTextColor;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E99843021F85570007EBF95 /* AllFloatViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E99842F21F85570007EBF95 /* AllFloatViewManager.m */; };
 		C4863C721EB43D8300B0B4E2 /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4863C711EB43D8300B0B4E2 /* DemoTableViewController.m */; };
 		C4863C751EB443B100B0B4E2 /* DemoBallTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4863C741EB443B100B0B4E2 /* DemoBallTitleTableViewController.m */; };
 		C4863C811EB4626500B0B4E2 /* MISCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C4863C801EB4626500B0B4E2 /* MISCustomButton.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E99842E21F85570007EBF95 /* AllFloatViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllFloatViewManager.h; sourceTree = "<group>"; };
+		8E99842F21F85570007EBF95 /* AllFloatViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllFloatViewManager.m; sourceTree = "<group>"; };
 		C4863C701EB43D8300B0B4E2 /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
 		C4863C711EB43D8300B0B4E2 /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		C4863C731EB443B100B0B4E2 /* DemoBallTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBallTitleTableViewController.h; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				C4E87DDC1EAB24520098F645 /* LaunchScreen.storyboard */,
 				C4E87DDF1EAB24520098F645 /* Info.plist */,
 				C4E87DCE1EAB24520098F645 /* Supporting Files */,
+				8E99842E21F85570007EBF95 /* AllFloatViewManager.h */,
+				8E99842F21F85570007EBF95 /* AllFloatViewManager.m */,
 			);
 			path = MISFloatingBall;
 			sourceTree = "<group>";
@@ -143,8 +148,8 @@
 				TargetAttributes = {
 					C4E87DCA1EAB24520098F645 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = SW9TH7TPPT;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = C6RYWRBCPS;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -192,6 +197,7 @@
 				C4E87DD31EAB24520098F645 /* AppDelegate.m in Sources */,
 				C4863C751EB443B100B0B4E2 /* DemoBallTitleTableViewController.m in Sources */,
 				C4E87DD01EAB24520098F645 /* main.m in Sources */,
+				8E99843021F85570007EBF95 /* AllFloatViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,11 +319,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SW9TH7TPPT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C6RYWRBCPS;
 				INFOPLIST_FILE = MISFloatingBall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chengpeng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = rs_test_dev;
 			};
 			name = Debug;
 		};
@@ -325,11 +333,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SW9TH7TPPT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MISFloatingBall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chengpeng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

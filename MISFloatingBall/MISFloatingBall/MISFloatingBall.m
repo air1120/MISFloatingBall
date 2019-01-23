@@ -17,6 +17,13 @@
 @implementation MISFloatingBallWindow
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    for (int i=0; i<self.subviews.count; i++) {
+        UIView *view = self.subviews[i];
+        if (CGRectContainsPoint(view.bounds,
+                                [view convertPoint:point fromView:self])&&![view isEqual:self.rootViewController.view]) {
+            return [super pointInside:point withEvent:event];
+        }
+    }
     __block MISFloatingBall *floatingBall = nil;
     [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[MISFloatingBall class]]) {
@@ -24,9 +31,8 @@
             *stop = YES;
         }
     }];
-    
-    if (CGRectContainsPoint(floatingBall.bounds,
-            [floatingBall convertPoint:point fromView:self])) {
+    if (floatingBall.backgroundViewClickHandler) {
+        floatingBall.backgroundViewClickHandler(floatingBall);
         return [super pointInside:point withEvent:event];
     }
     
@@ -101,13 +107,6 @@
 @property (nonatomic, assign) NSTimeInterval autoEdgeOffsetDuration;
 
 @property (nonatomic, assign, getter=isAutoEdgeRetract) BOOL autoEdgeRetract;
-
-@property (nonatomic, strong) UIView *parentView;
-
-// content
-@property (nonatomic, strong) UIImageView *ballImageView;
-@property (nonatomic, strong) UILabel *ballLabel;
-@property (nonatomic, strong) UIView *ballCustomView;
 
 @property (nonatomic, assign) UIEdgeInsets effectiveEdgeInsets;
 @end
@@ -304,6 +303,9 @@ static const NSInteger minUpDownLimits = 60 * 1.5f;   // MISFloatingBallEdgePoli
 // 手势处理
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)panGesture {
     if (UIGestureRecognizerStateBegan == panGesture.state) {
+        if (self.panStartHandler) {
+            self.panStartHandler(self);
+        }
         [self setAlpha:1.0f];
         
         // cancel

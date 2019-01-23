@@ -11,9 +11,8 @@
 
 #import "MISFloatingBall.h"
 #import "MISCustomButton.h"
-
 #import "DemoBallSpecifiedViewController.h"
-
+#import "AllFloatViewManager.h"
 @interface Example : NSObject
 @property (nonatomic,   copy) NSString *title;
 @property (nonatomic, assign) SEL selctor;
@@ -33,6 +32,7 @@
 @property (nonatomic, strong) NSArray *headerTitles;
 @property (nonatomic, strong) NSArray<NSArray<Example *> *> *demoDatas;
 @property (nonatomic, strong) MISFloatingBall *globallyBall;
+@property (nonatomic,   strong) UIView *floatView;
 
 @end
 
@@ -58,6 +58,7 @@
                            [Example exampleWithTitle:@"自动靠边" selector:@selector(autoCloseEdge)],
                            [Example exampleWithTitle:@"自动向边缘缩进" selector:@selector(autoEdgeRetract)],
                            [Example exampleWithTitle:@"只能左右停靠" selector:@selector(leftRight)],
+                           [Example exampleWithTitle:@"只能左右停靠,带展开页" selector:@selector(leftRightWithView)],
                            ],
                        @[
                            [Example exampleWithTitle:@"当前View生效ball " selector:@selector(specifiedView)],
@@ -107,6 +108,9 @@
     globallyBall.clickHandler = ^(MISFloatingBall * _Nonnull floatingBall) {
         [floatingBall disVisible];
     };
+}
+- (void)leftRightWithView {
+    [AllFloatViewManager show:self.floatView];
 }
 
 - (void)autoCloseEdge {
@@ -188,4 +192,12 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     });
 }
+-(UIView *)floatView{
+    if (!_floatView) {
+        _floatView  = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+        _floatView.backgroundColor = [UIColor redColor];
+    }
+    return _floatView;
+}
+
 @end
